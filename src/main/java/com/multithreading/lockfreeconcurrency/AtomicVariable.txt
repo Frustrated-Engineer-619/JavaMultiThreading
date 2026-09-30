@@ -1,0 +1,8 @@
+Atomic Variable :
+1. Operation -> Single Unit
+2. All or Nothing
+
+
+count++ : Non-Atomic Operation
+
+AtomicInteger :

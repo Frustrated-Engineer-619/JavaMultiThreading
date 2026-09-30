@@ -1,0 +1,38 @@
+interface Executor{
+    void execute(Runnable task);
+}
+
+interface ExecutorService{}
+Methods:
+execute() : Execute takes the Runnable task. (No return type)
+submit()  : Submit takes the Callable task. (Return type)
+shutdown()
+shutdownNow()
+
+Executors .newFixedThreadPool()  : Internally used ThreadPoolExecutor
+          .newCacheThreadPool()
+
+ThreadPoolExecutor(
+    int currPoolSize,
+    int maximumPoolSize,
+    long keepAliveTime,
+    Timeunit unit,
+    BlockingQueue<Runnable> workQueue
+)
+
+FixedThread Pool =>  (Fixed No of Thread) + (Unbounded Queue) => memeory issue
+CachetThreadPool => (Unlimited Threads + No Queue) => 60 sec Idel Timeout
+SingleThreadPool => (1 Thread + Queue) => Serializable
+
+
+ScheduledThreadPool : Run task in future
+
+scheduler.schedule(Task,2,TimeUnit.SECONDS)
+scheduler.scheduleAtFixedRate(Task,0,2,TimeUnit.SECONDS)
+
+Thread Rejection Policy :
+1.Abort Policy : Rejected Exception
+2.Discard Policy : Silently Discard
+3.DiscardOldestPolicy
+
+
