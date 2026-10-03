@@ -36,3 +36,89 @@ Thread Rejection Policy :
 3.DiscardOldestPolicy
 
 
+
+Future :
+
+3 Overload Methods:
+
+1.Submit(Callable task) - Submit with Callable : Future<Integer> i = executor.submit(()->10);
+2.Submit(Runnable task) - Submit with Runnable : Future<?> f1 = executor.submit(()->S.O.P("Hello"));
+3.Submit with Runnable task with a predefined result : Future<String> f1 = executor.submit(()->S.O.P("Hello"),"Success");
+
+f1.get => "Successs"
+
+
+
+Methods in Future :
+1. get()
+    Exceptions : InterruptedException and ExecutionException
+
+2. get(timeout,unit) : If we don't get the result in the specificed timeout will get TimeoutException
+
+3.isDone() : The task is complete or not. It doesn't block the main thread
+
+4. cancel(boolean mayInterruptIfRunning)
+    Future<Integer> f1 = executor.submit(() -> 10)
+    f1.cancel( true );
+
+    1.if not started -> cancel
+    2.task already running
+        |-> (true) : try to interrupt
+        |-> (false) : let it finish
+
+5. isCancelled()
+
+
+Future limitations : limitations -> f1.get() [Blocking] main thread get blocked
+    Cannot connect/chain multiple results.
+
+
+CompletableFuture :
+
+    Future<Integer> f1 = executor.submit()
+    CompletableFuture<Integer> f2 = CompletableFuture.supplyAsync(()->10);
+
+    supplyAsync()  -> Return value
+    runAsync() -> No return value
+
+Chaining : Its non Blocking
+    thenApply() -> transform
+    thenAccept() -> consumer
+    thenRun()
+
+
+Fork Join Pool Executor :[fork = Divide, Join]
+|-> Parallelism
+
+Task :
+    |-> RecursiveTask  : return value
+    |-> RecursiveAction : no return value
+
+arr[] -> [1,2,3,4,5,6,7,8,9] => Fork-Join Pool
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
